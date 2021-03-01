@@ -1,0 +1,8 @@
+>>> string_to_hide = """print("Hello World!")"""
+>>> binary = "".join('{0:08b}'.format(ord(c)) for c in string_to_hide)
+>>> binary
+'011100000111001001101001011011100111010000101000001000100100100001100101011011000110110001101111001000000101011101101111011100100110110001100100001000010010001000101001'
+>>> whitespaces = binary.replace("0", "\t").replace("1", " ")
+>>> whitespaces
+'\t   \t\t\t\t\t   \t\t \t\t  \t \t\t \t  \t   \t\t   \t \t\t\t\t \t \t\t\t\t\t \t\t\t \t\t \t\t \t\t\t\t  \t\t \t \t  \t  \t\t\t  \t  \t\t\t  \t    \t\t \t\t\t\t\t\t \t \t   \t  \t    \t   \t\t \t\t  \t  \t\t\t  \t\t \t\t\t\t \t\t\t\t \t\t \t\t\t \t\t\t \t \t\t '
+>>>

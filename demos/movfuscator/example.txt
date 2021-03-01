@@ -1,0 +1,110 @@
+$ objdump -d -Mintel --no-show-raw-insn example_gcc
+
+000000000000068a <is_prime>:
+ 68a:   push   rbp
+ 68b:   mov    rbp,rsp
+ 68e:   mov    DWORD PTR [rbp-0x14],edi
+ 691:   cmp    DWORD PTR [rbp-0x14],0x1
+ 695:   jg     69e <is_prime+0x14>
+ 697:   mov    eax,0x0
+ 69c:   jmp    6dd <is_prime+0x53>
+ 69e:   cmp    DWORD PTR [rbp-0x14],0x2
+ 6a2:   jne    6ab <is_prime+0x21>
+ 6a4:   mov    eax,0x1
+ 6a9:   jmp    6dd <is_prime+0x53>
+ 6ab:   mov    DWORD PTR [rbp-0x4],0x2
+ 6b2:   jmp    6cc <is_prime+0x42>
+ 6b4:   mov    eax,DWORD PTR [rbp-0x14]
+ 6b7:   cdq
+ 6b8:   idiv   DWORD PTR [rbp-0x4]
+ 6bb:   mov    eax,edx
+ 6bd:   test   eax,eax
+ 6bf:   jne    6c8 <is_prime+0x3e>
+ 6c1:   mov    eax,0x0
+ 6c6:   jmp    6dd <is_prime+0x53>
+ 6c8:   add    DWORD PTR [rbp-0x4],0x1
+ 6cc:   mov    eax,DWORD PTR [rbp-0x4]
+ 6cf:   imul   eax,DWORD PTR [rbp-0x4]
+ 6d3:   cmp    DWORD PTR [rbp-0x14],eax
+ 6d6:   jge    6b4 <is_prime+0x2a>
+ 6d8:   mov    eax,0x1
+ 6dd:   pop    rbp
+ 6de:   ret
+ 
+ 
+$ objdump -d -Mintel --no-show-raw-insn example_movfuscator
+ 
+ 080487da <is_prime>:
+ 80487da:	mov    eax,ds:0x83fd158
+ 80487df:	mov    edx,0x880487da
+ 80487e4:	mov    ds:0x81fcfe0,eax
+ 80487e9:	mov    DWORD PTR ds:0x81fcfe4,edx
+ 80487ef:	mov    eax,0x0
+ 80487f4:	mov    ecx,0x0
+ 80487f9:	mov    edx,0x0
+ 80487fe:	mov    al,ds:0x81fcfe0
+ 8048803:	mov    ecx,DWORD PTR [eax*4+0x80575f0]
+ 804880a:	mov    dl,BYTE PTR ds:0x81fcfe4
+ 8048810:	mov    dl,BYTE PTR [ecx+edx*1]
+ 8048813:	mov    DWORD PTR ds:0x81fcfd0,edx
+ 8048819:	mov    al,ds:0x81fcfe1
+ 804881e:	mov    ecx,DWORD PTR [eax*4+0x80575f0]
+ 8048825:	mov    dl,BYTE PTR ds:0x81fcfe5
+ 804882b:	mov    dl,BYTE PTR [ecx+edx*1]
+ 804882e:	mov    DWORD PTR ds:0x81fcfd4,edx
+ 8048834:	mov    al,ds:0x81fcfe2
+ 8048839:	mov    ecx,DWORD PTR [eax*4+0x80575f0]
+ 8048840:	mov    dl,BYTE PTR ds:0x81fcfe6
+ 8048846:	mov    dl,BYTE PTR [ecx+edx*1]
+ 8048849:	mov    DWORD PTR ds:0x81fcfd8,edx
+ 804884f:	mov    al,ds:0x81fcfe3
+ 8048854:	mov    ecx,DWORD PTR [eax*4+0x80575f0]
+ 804885b:	mov    dl,BYTE PTR ds:0x81fcfe7
+ 8048861:	mov    dl,BYTE PTR [ecx+edx*1]
+ 8048864:	mov    DWORD PTR ds:0x81fcfdc,edx
+ 804886a:	mov    eax,ds:0x81fcfd0
+ 804886f:	mov    edx,DWORD PTR ds:0x81fcfd4
+ 8048875:	mov    eax,DWORD PTR [eax*4+0x8054090]
+ 804887c:	mov    eax,DWORD PTR [eax+edx*4]
+ 804887f:	mov    ds:0x81fcfd0,eax
+ 8048884:	mov    eax,ds:0x81fcfd0
+ 8048889:	mov    edx,DWORD PTR ds:0x81fcfd8
+ 804888f:	mov    eax,DWORD PTR [eax*4+0x8054090]
+ 8048896:	mov    eax,DWORD PTR [eax+edx*4]
+ 8048899:	mov    ds:0x81fcfd0,eax
+ 804889e:	mov    eax,ds:0x81fcfd0
+ 80488a3:	mov    edx,DWORD PTR ds:0x81fcfdc
+ 80488a9:	mov    eax,DWORD PTR [eax*4+0x8054090]
+ 80488b0:	mov    eax,DWORD PTR [eax+edx*4]
+ 80488b3:	mov    ds:0x81fcfd0,eax
+ 80488b8:	mov    eax,ds:0x81fcfd0
+ 80488bd:	mov    ds:0x81fcfd0,eax
+ 80488c2:	mov    ecx,DWORD PTR ds:0x81fcfd0
+ 80488c8:	mov    DWORD PTR ds:0x83fd164,0x8054030
+ 80488d2:	mov    eax,DWORD PTR [ecx*4+0x83fd160]
+ 80488d9:	mov    edx,DWORD PTR ds:0x85fd180
+ 80488df:	mov    DWORD PTR [eax],edx
+ 80488e1:	mov    DWORD PTR ds:0x83fd164,0x8054034
+ 80488eb:	mov    eax,DWORD PTR [ecx*4+0x83fd160]
+ 80488f2:	mov    edx,DWORD PTR ds:0x85fd184
+ 80488f8:	mov    DWORD PTR [eax],edx
+ 80488fa:	mov    DWORD PTR ds:0x83fd164,0x8054038
+ 8048904:	mov    eax,DWORD PTR [ecx*4+0x83fd160]
+ 804890b:	mov    edx,DWORD PTR ds:0x85fd188
+ 8048911:	mov    DWORD PTR [eax],edx
+ 8048913:	mov    DWORD PTR ds:0x83fd164,0x805403c
+ 804891d:	mov    eax,DWORD PTR [ecx*4+0x83fd160]
+ 8048924:	mov    edx,DWORD PTR ds:0x85fd18c
+ 804892a:	mov    DWORD PTR [eax],edx
+ 804892c:	mov    DWORD PTR ds:0x83fd164,0x8054040
+ 8048936:	mov    eax,DWORD PTR [ecx*4+0x83fd160]
+ 804893d:	mov    edx,DWORD PTR ds:0x85fd190
+ 8048943:	mov    DWORD PTR [eax],edx
+ 8048945:	mov    DWORD PTR ds:0x83fd164,0x8054044
+ 804894f:	mov    eax,DWORD PTR [ecx*4+0x83fd160]
+ 8048956:	mov    edx,DWORD PTR ds:0x85fd194
+ 804895c:	mov    DWORD PTR [eax],edx
+ 804895e:	mov    DWORD PTR ds:0x83fd164,0x8054048
+ 8048968:	mov    eax,DWORD PTR [ecx*4+0x83fd160]
+ 804896f:	mov    edx,DWORD PTR ds:0x85fd198
+ ....
